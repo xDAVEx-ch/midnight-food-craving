@@ -10,6 +10,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "eslint": "^7.32.0",
     "expo": "~44.0.0",
     "expo-status-bar": "~1.2.0",
     "react": "17.0.1",
@@ -18,7 +19,14 @@
     "react-native-web": "0.17.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9"
+    "@babel/core": "^7.12.9",
+    "@react-native-community/eslint-config": "^3.0.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-flowtype": "^8.0.3",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react-hooks": "^4.2.1-rc.0-next-fe905f152-20220107",
+    "prettier": "^2.5.1"
   },
   "private": true
 }

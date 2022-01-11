@@ -1,0 +1,7 @@
+{
+  "extends": ["@react-native-community", "prettier"],
+  "rules": {
+    "quotes": [2, "single", {"avoidEscape": true}]
+  },
+  "plugins": ["prettier"]
+}
