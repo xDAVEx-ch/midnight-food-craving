@@ -1,7 +1,15 @@
+/* Some of the configuration options came from here
+  https://dev.to/s2engineers/how-to-make-eslint-work-with-prettier-avoiding-conflicts-and-problems-57pi
+
+  Here the babel-eslit parser works perfect, but there's a new version for this package. It'll need to be
+  replace for @babel/eslint-parser
+  https://stackoverflow.com/questions/53609457/eslint-parsing-error-unexpected-token-in-jsx
+*/
 {
   "extends": ["@react-native-community", "prettier"],
   "rules": {
     "quotes": [2, "single", {"avoidEscape": true}]
   },
+  "parser": "babel-eslint",
   "plugins": ["prettier"]
 }
