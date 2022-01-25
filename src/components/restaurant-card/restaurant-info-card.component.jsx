@@ -1,55 +1,20 @@
 import React from 'react';
-import { Image } from 'react-native';
-
-import { Card } from 'react-native-paper';
 import { SvgXml } from 'react-native-svg';
 import start from '../../../assets/start';
 import open from '../../../assets/open';
 import { Spacer } from '../spacer/spacer.component';
 import { Text } from './../typography/text.component';
 
-import styled from 'styled-components/native';
-
-/*Every styled component receives this props element with the theme object */
-const RestaurantCard = styled(Card)`
-  background-color: ${(props) => props.theme.colors.bg.primary};
-`;
-
-const RestaurantCardCover = styled(Card.Cover)`
-  padding: ${(props) => props.theme.space[3]};
-  background-color: ${(props) => props.theme.colors.bg.primary};
-`;
-
-const Info = styled.View``;
-
-const Address = styled.Text`
-  font-family: ${(props) => props.theme.fonts.body};
-  font-size: ${(props) => props.theme.fontSizes.caption};
-`;
-
-const Rating = styled.View`
-  flex-direction: row;
-  padding-top: ${(props) => props.theme.space[2]};
-  padding-bottom: ${(props) => props.theme.space[2]};
-`;
-
-const BodyCard = styled.View`
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: ${(props) => props.theme.space[3]};
-`;
-
-const SectionEnd = styled.View`
-  flex-direction: row;
-  align-items: center;
-  flex-wrap: wrap;
-`;
-
-const Icon = styled.Image`
-  width: 15px;
-  height: 15px;
-`;
+import {
+  RestaurantCard,
+  RestaurantCardCover,
+  Info,
+  Address,
+  Rating,
+  BodyCard,
+  SectionEnd,
+  Icon,
+} from './restaurant-info-card.styles';
 
 export const RestaurantInfoCard = ({ restaurant = {} }) => {
   const {
