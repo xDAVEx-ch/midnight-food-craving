@@ -34,6 +34,24 @@ const Map = () => (
   </SafeArea>
 );
 
+const TAB_ICON = {
+  Restaurants: 'fast-food-outline',
+  Map: 'location-outline',
+  Settings: 'settings-outline',
+};
+
+/* Our options including "headerShown: false" to hide the header and an objet togive style to label text*/
+const createScreenOptions = ({ route }) => {
+  const iconName = TAB_ICON[route.name];
+  return {
+    headerShown: false,
+    tabBarLabelStyle: { width: '100%' },
+    tabBarIcon: ({ size, color }) => (
+      <Ionicons name={iconName} size={size} color={color} />
+    ),
+  };
+};
+
 /* SafeAreaView keeps the app inside te correct boundaries. Only for IOS version 11*/
 export default function App() {
   const [oswaldLoaded] = useOswald({
@@ -52,12 +70,10 @@ export default function App() {
       <PaperProvider>
         <NavigationContainer>
           <Tab.Navigator
-            screenOptions={{
-              headerStyle: { backgroundColor: 'transparent' },
-              headerTintColor: 'red',
-              headerTransparent: true,
-              headerTitle: '',
-              headerShadowVisible: false,
+            screenOptions={createScreenOptions}
+            tabBarOptions={{
+              activeTintColor: 'tomato',
+              inactiveTintColor: 'gray',
             }}
           >
             <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
