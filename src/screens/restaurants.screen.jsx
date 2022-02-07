@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { SafeAreaView, StatusBar, FlatList } from 'react-native';
 
 import { Searchbar } from 'react-native-paper';
 import styled from 'styled-components/native';
+import { ActivityIndicator, Colors } from 'react-native-paper';
 
 import { RestaurantInfoCard } from '../components/restaurant-card/restaurant-info-card.component';
 import { Spacer } from './../components/spacer/spacer.component';
+import { RestaurantsContext } from '../services/restaurant/restaurant.context';
 
 /*
 if StatusBar.currentHeight exists, returns `margin-top: ${StatusBar.currentHeight}px`}
@@ -26,34 +28,36 @@ const RestaurantList = styled(FlatList).attrs({
   },
 })``;
 
+const Loading = styled(ActivityIndicator)`
+  margin-left: -25px;
+`;
+
+const LoadingContainer = styled.View`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+`;
+
 /* contentContainerStyle defines the styles applied to the container RestaurantInfoCard*/
 /* keyExtractor={(item) => item.name} using the name of our item as key for children components */
 export const RestaurantsScreen = () => {
+  const { isLoading, error, restaurants } = useContext(RestaurantsContext);
+
   return (
     <SafeArea>
+      {isLoading && (
+        <LoadingContainer>
+          <Loading size={50} animating={true} color={Colors.red300} />
+        </LoadingContainer>
+      )}
       <SearchContainer>
         <Searchbar placeholder="Search" />
       </SearchContainer>
       <RestaurantList
-        data={[
-          { name: 1 },
-          { name: 2 },
-          { name: 3 },
-          { name: 4 },
-          { name: 5 },
-          { name: 6 },
-          { name: 7 },
-          { name: 8 },
-          { name: 9 },
-          { name: 10 },
-          { name: 11 },
-          { name: 12 },
-          { name: 13 },
-          { name: 14 },
-        ]}
-        renderItem={() => (
+        data={restaurants}
+        renderItem={({ item }) => (
           <Spacer position="bottom" size="large">
-            <RestaurantInfoCard />
+            <RestaurantInfoCard restaurant={item} />
           </Spacer>
         )}
         keyExtractor={(item) => item.name}

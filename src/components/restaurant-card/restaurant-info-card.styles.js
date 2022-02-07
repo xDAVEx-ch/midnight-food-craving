@@ -12,7 +12,9 @@ export const RestaurantCardCover = styled(Card.Cover)`
   background-color: ${(props) => props.theme.colors.bg.primary};
 `;
 
-export const Info = styled.View``;
+export const Info = styled.View`
+  width: 45%;
+`;
 
 export const Address = styled.Text`
   font-family: ${(props) => props.theme.fonts.body};
@@ -35,7 +37,6 @@ export const BodyCard = styled.View`
 export const SectionEnd = styled.View`
   flex-direction: row;
   align-items: center;
-  flex-wrap: wrap;
 `;
 
 export const Icon = styled.Image`

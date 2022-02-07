@@ -20,6 +20,7 @@ import { useFonts as useLato, Lato_400Regular } from '@expo-google-fonts/lato';
 
 import { RestaurantsScreen } from './src/screens/restaurants.screen';
 import { SafeArea } from './src/utils/safe-area.component';
+import { RestaurantContextProvider } from './src/services/restaurant/restaurant.context';
 
 const Tab = createBottomTabNavigator();
 
@@ -46,6 +47,8 @@ const createScreenOptions = ({ route }) => {
   return {
     headerShown: false,
     tabBarLabelStyle: { width: '100%' },
+    tabBarActiveTintColor: 'tomato',
+    tabBarInactiveTintColor: 'gray',
     tabBarIcon: ({ size, color }) => (
       <Ionicons name={iconName} size={size} color={color} />
     ),
@@ -67,21 +70,17 @@ export default function App() {
   }
   return (
     <ThemeProvider theme={theme}>
-      <PaperProvider>
-        <NavigationContainer>
-          <Tab.Navigator
-            screenOptions={createScreenOptions}
-            tabBarOptions={{
-              activeTintColor: 'tomato',
-              inactiveTintColor: 'gray',
-            }}
-          >
-            <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
-            <Tab.Screen name="Map" component={Map} />
-            <Tab.Screen name="Settings" component={Settings} />
-          </Tab.Navigator>
-        </NavigationContainer>
-      </PaperProvider>
+      <RestaurantContextProvider>
+        <PaperProvider>
+          <NavigationContainer>
+            <Tab.Navigator screenOptions={createScreenOptions}>
+              <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
+              <Tab.Screen name="Map" component={Map} />
+              <Tab.Screen name="Settings" component={Settings} />
+            </Tab.Navigator>
+          </NavigationContainer>
+        </PaperProvider>
+      </RestaurantContextProvider>
     </ThemeProvider>
   );
 }

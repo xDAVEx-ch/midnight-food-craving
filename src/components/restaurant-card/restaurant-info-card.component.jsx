@@ -20,18 +20,18 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
   const {
     name = 'some restaurant',
     icon = 'https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png',
-    photos = 'https://dummyimage.com/600x400/2e062e/fff.jpg',
+    photos = ['https://dummyimage.com/600x400/2e062e/fff.jpg'],
     address = 'Some random street',
     isOpenNow = true,
     rating = 4,
-    isCloseTemp = true,
+    isCloseTemporaly = true,
   } = restaurant;
 
   const ratingArray = Array.from(new Array(Math.floor(rating)));
 
   return (
     <RestaurantCard elevation={5}>
-      <RestaurantCardCover key={name} source={{ uri: photos }} />
+      <RestaurantCardCover key={name} source={{ uri: photos[0] }} />
       <BodyCard>
         <Info>
           <Text>{name}</Text>
@@ -43,8 +43,8 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
           <Address>{address}</Address>
         </Info>
         <SectionEnd>
-          {isCloseTemp && <Text variant="error">CLOSED TEMPORARILY</Text>}
-          <Spacer position="left" size="large">
+          {!isOpenNow && <Text variant="error">CLOSED TEMPORARILY</Text>}
+          <Spacer position="right" size="large">
             {isOpenNow && <SvgXml xml={open} width={20} height={20} />}
           </Spacer>
           <Spacer position="left" size="large">
