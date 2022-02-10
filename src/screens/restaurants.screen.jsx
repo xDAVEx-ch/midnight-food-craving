@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
 import { SafeAreaView, StatusBar, FlatList } from 'react-native';
 
-import { Searchbar } from 'react-native-paper';
 import styled from 'styled-components/native';
 import { ActivityIndicator, Colors } from 'react-native-paper';
 
-import { RestaurantInfoCard } from '../components/restaurant-card/restaurant-info-card.component';
 import { Spacer } from './../components/spacer/spacer.component';
 import { RestaurantsContext } from '../services/restaurant/restaurant.context';
+import { Search } from '../components/search/search.component';
+import { RestaurantInfoCard } from '../components/restaurant-card/restaurant-info-card.component';
 
 /*
 if StatusBar.currentHeight exists, returns `margin-top: ${StatusBar.currentHeight}px`}
@@ -16,10 +16,6 @@ In IOS SafeAreaView protects us from this
 const SafeArea = styled(SafeAreaView)`
   flex: 1;
   ${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px`};
-`;
-
-const SearchContainer = styled.View`
-  padding: ${(props) => props.theme.space[3]};
 `;
 
 const RestaurantList = styled(FlatList).attrs({
@@ -50,9 +46,7 @@ export const RestaurantsScreen = () => {
           <Loading size={50} animating={true} color={Colors.red300} />
         </LoadingContainer>
       )}
-      <SearchContainer>
-        <Searchbar placeholder="Search" />
-      </SearchContainer>
+      <Search />
       <RestaurantList
         data={restaurants}
         renderItem={({ item }) => (
