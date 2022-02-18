@@ -37,7 +37,7 @@ const LoadingContainer = styled.View`
 /* contentContainerStyle defines the styles applied to the container RestaurantInfoCard*/
 /* keyExtractor={(item) => item.name} using the name of our item as key for children components */
 export const RestaurantsScreen = () => {
-  const { isLoading, error, restaurants } = useContext(RestaurantsContext);
+  const { isLoading, restaurants } = useContext(RestaurantsContext);
 
   return (
     <SafeArea>
