@@ -50,6 +50,7 @@ const createScreenOptions = ({ route }) => {
     tabBarLabelStyle: { width: '100%' },
     tabBarActiveTintColor: 'tomato',
     tabBarInactiveTintColor: 'gray',
+    tabBarHideOnKeyboard: true,
     tabBarIcon: ({ size, color }) => (
       <Ionicons name={iconName} size={size} color={color} />
     ),
